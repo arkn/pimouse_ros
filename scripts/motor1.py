@@ -15,10 +15,10 @@ class Motor():
         self.using_cmd_vel = False
 
     def set_power(self, onoff = False):
-        en = "/dev/rtmotoren0"
+        en = '/dev/rtmotoren0'
         try:
             with open(en, 'w') as f:
-                f.write("1\n" if onoff else "0\n")
+                f.write('1\n' if onoff else '0\n')
             self.is_on = onoff
             return True
         except:
@@ -34,8 +34,8 @@ class Motor():
         try:
             with open("/dev/rtmotor_raw_l0", 'w') as lf, \
                  open("/dev/rtmotor_raw_r0", 'w') as rf:
-                lf.write(str(int(round(left_hz))) + "\n")
-                rf.write(str(int(round(right_hz))) + "\n")
+                lf.write(str(int(round(left_hz))) + '\n')
+                rf.write(str(int(round(right_hz))) + '\n')
         except:
             rospy.logerr("cannot write to rtmotor_raw_*")
 
