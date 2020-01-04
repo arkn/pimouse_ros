@@ -25,7 +25,7 @@ class MotorTest(unittest.TestCase):
             time.sleep(0.1)
 
         self.file_check("rtmotor_raw_l0", m.left_hz, "wrong left value from motor_raw")
-        self.file_check("rtmotor_raw_r0", m.left_hz, "wrong right value from motor_raw")
+        self.file_check("rtmotor_raw_r0", m.right_hz, "wrong right value from motor_raw")
 
     def test_put_cmd_vel(self):
         pub = rospy.Publisher('/cmd_vel', Twist)
@@ -42,7 +42,6 @@ class MotorTest(unittest.TestCase):
         time.sleep(1.1)
         self.file_check("rtmotor_raw_l0", 0, "don't stop after 1[sec]")
         self.file_check("rtmotor_raw_r0", 0, "don't stop after 1[sec]")
-        self.assertEqual(vs.sum_forward, lf+rf, "different value: sum_forward")
 
 if __name__ == '__main__':
     time.sleep(3)
