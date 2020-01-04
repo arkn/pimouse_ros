@@ -10,7 +10,6 @@ class BuzzerTest(unittest.TestCase):
         self.client = actionlib.SimpleActionClient("music", MusicAction)
         self.device_values = []
 
-
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
         self.assertIn('/buzzer',nodes, "node does not exist")
