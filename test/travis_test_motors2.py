@@ -16,8 +16,6 @@ class MotorTest(unittest.TestCase):
         ret = on()
 
     def file_check(self,dev,value,message):
-
-    def file_check(self,dev,value,message):
         with open("/dev/"+dev,"r") as f:
             s = f.readline()
             self.assertEqual(s, str(value)+"\n", message)
