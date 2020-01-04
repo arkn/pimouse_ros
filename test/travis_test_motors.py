@@ -9,7 +9,6 @@ from std_srvs.srv import Trigger, TriggerResponse
 from pimouse_ros.srv import TimedMotion
 
 class MotorTest(unittest.TestCase):
-
     def setUp(self):
         rospy.wait_for_service('/motor_on')
         rospy.wait_for_service('/motor_off')
@@ -35,8 +34,8 @@ class MotorTest(unittest.TestCase):
             pub.publish(m)
             time.sleep(0.1)
 
-        # self.file_check("rtmotor_raw_r0",m.right_hz,"wrong right value from motor_raw")
-        # self.file_check("rtmotor_raw_l0",m.left_hz,"wrong left value from motor_raw")
+        self.file_check("rtmotor_raw_r0",m.right_hz,"wrong right value from motor_raw")
+        self.file_check("rtmotor_raw_l0",m.left_hz,"wrong left value from motor_raw")
 
     def test_put_cmd_vel(self):
         pub = rospy.Publisher('/cmd_vel', Twist)
