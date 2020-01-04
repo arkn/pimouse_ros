@@ -51,8 +51,8 @@ class MotorTest(unittest.TestCase):
 
         time.sleep(1.2)
 
-        # self.file_check("rtmotor_raw_r0",0,"don't stop after 1[sec]")
-        # self.file_check("rtmotor_raw_l0",0,"don't stop after 1[sec]")
+        self.file_check("rtmotor_raw_r0",0,"don't stop after 1[sec]")
+        self.file_check("rtmotor_raw_l0",0,"don't stop after 1[sec]")
 
     def test_on_off(self):
         off = rospy.ServiceProxy('/motor_off', Trigger)
@@ -73,7 +73,7 @@ class MotorTest(unittest.TestCase):
 
     def test_put_value_timed(self):
         tm = rospy.ServiceProxy('/timed_motion', TimedMotion)
-        tm(-321, 654, 1500)
+        tm(-321,654,1500)
         with open("/dev/rtmotor0", "r") as f:
             data = f.readline()
             self.assertEqual(data, "-321 654 1500\n", "value does not written to rtmotor0")
