@@ -61,7 +61,7 @@ class MotorTest(unittest.TestCase):
         self.assertEqual(ret.message, "OFF", "motor off has wrong message")
         with open("/dev/rtmotoren0","r") as f:
             data = f.readline()
-            self.assertEqual(data, "0\n", "wrong value in rtmotor0 at motor off")
+            self.assertEqual(data, "0\n", "wrong value in rtmotoren0 at motor off")
 
         on = rospy.ServiceProxy('/motor_on', Trigger)
         ret = on()
@@ -69,7 +69,7 @@ class MotorTest(unittest.TestCase):
         self.assertEqual(ret.message, "ON", "motor on has wrong message")
         with open("/dev/rtmotoren0", "r") as f:
             data = f.readline()
-            self.assertEqual(data, "1\n", "wrong value in rtmotor0 at motor on")
+            self.assertEqual(data, "1\n", "wrong value in rtmotoren0 at motor on")
 
     def test_put_value_timed(self):
         tm = rospy.ServiceProxy('/timed_motion', TimedMotion)
